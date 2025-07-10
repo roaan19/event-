@@ -1,14 +1,18 @@
 from tkinter import *
-from tkinter import messagebox
 
-root = Tk()
-root.geometry("200x200")
+window = Tk()
+window.title("Event handler")
+window.geometry("100x100")
 
-def msg():
-    messagebox.showwarning("alert","stop! virus found")
+def handle_keypress(event):
+    print(event.char)
+window.bind("<key>",handle_keypress)
+def handle_click(event):
+    print("\nThe button was clicked!")
 
-button = Button(root, text="scan for virus",command=msg)
-button.place(x=40,y=80)
+button = Button(text="click me!")
+button.pack()
 
-root.mainloop()
+button.bind("<Button-1>",handle_click)
 
+window.mainloop()
